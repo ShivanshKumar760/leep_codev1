@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Leepcode Judge</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <h1>Leepcode</h1>
+    <span class="status" id="server-status" role="status">Connecting…</span>
+  </header>
+
+  <div class="layout">
+    <nav class="sidebar" aria-label="Problems">
+      <h2>Problems</h2>
+      <ul id="problem-list" class="problem-list"></ul>
+    </nav>
+
+    <main class="workspace" id="workspace" hidden>
+      <section class="panel statement" aria-labelledby="problem-title">
+        <div class="statement-head">
+          <h2 id="problem-title"></h2>
+          <span id="problem-difficulty" class="badge"></span>
+        </div>
+        <p id="problem-description" class="description"></p>
+
+        <h3>Example</h3>
+        <div class="example">
+          <div><span class="label">Input</span><pre id="example-input"></pre></div>
+          <div><span class="label">Expected output</span><pre id="example-expected"></pre></div>
+        </div>
+        <p class="hint" id="hidden-count"></p>
+      </section>
+
+      <section class="panel editor-panel" aria-label="Code editor">
+        <div class="editor-bar">
+          <span class="file-name">solution.py</span>
+          <div class="actions">
+            <button type="button" id="reset-btn" class="btn ghost">Reset code</button>
+            <button type="button" id="submit-btn" class="btn primary">Run tests</button>
+          </div>
+        </div>
+        <div class="editor">
+          <pre id="gutter" class="gutter" aria-hidden="true">1</pre>
+          <textarea id="code" spellcheck="false" autocapitalize="off" autocomplete="off"
+                    aria-label="Python solution"></textarea>
+        </div>
+        <p class="hint kbd">Ctrl/⌘ + Enter runs the tests. Tab inserts four spaces.</p>
+      </section>
+
+      <section class="panel results-panel" aria-live="polite">
+        <div id="summary" class="summary" hidden></div>
+        <ul id="results" class="results"></ul>
+        <p id="results-empty" class="hint">Run your code to see test results here.</p>
+      </section>
+    </main>
+
+    <p id="empty-state" class="empty">Select a problem to start.</p>
+  </div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

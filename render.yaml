@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: leetcode-judge
+    runtime: python
+    plan: free
+    region: oregon
+    branch: main
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app --bind 0.0.0.0:$PORT --timeout 30"
+    healthCheckPath: /
+    autoDeploy: false          # deploys are triggered by the GitHub Action
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
